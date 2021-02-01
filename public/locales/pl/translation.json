@@ -1,0 +1,7 @@
+{
+    "title": "Zadanie rekrutacyjne",
+    "cardNumber": "Numer karty",
+    "cardValidateMessage": "Numer karty jest niepoprawny.",
+    "dateValidateMessage": "Upłynął termin ważności karty.",
+    "date": "MM / RR"
+}

@@ -1,0 +1,7 @@
+{
+    "title": "Recruitment task",
+    "cardNumber": "Card number",
+    "cardValidateMessage": "Credit card number is incorrect.",
+    "dateValidateMessage": "Credit card is out of date.",
+    "date": "MM / YY"
+}
