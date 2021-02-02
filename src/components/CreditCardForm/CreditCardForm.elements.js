@@ -10,6 +10,10 @@ align-items: center;
 flex-direction: column;
 padding: 5rem;
 color: #000000;
+
+@media (max-width: 600px) {
+    padding: 2rem;
+}
 `
 
 export const CreditCard = styled.div`
@@ -18,6 +22,10 @@ justify-content: center;
 align-items: center;
 border: 12px solid #ECEFF2;
 padding: .5em;
+
+@media (max-width: 470px) {
+    flex-direction: column;
+}
 `
 
 export const ErrorNotification = styled.p`
@@ -45,11 +53,19 @@ font-size: 1.7em;
 export const CardInput = styled.input`
 border: none;
 outline: none;
+
+@media (max-width: 470px) {
+    text-align: center;
+}
 `
 
 export const CardNumber = styled(CardInput)`
 width: 170px;
 margin-left: 1em;
+
+@media (max-width: 470px) {
+    margin: .5em 0;
+}
 `
 
 export const CardDate = styled(CardInput)`
@@ -59,4 +75,8 @@ width: 70px;
 export const CardCvc = styled(CardInput)`
 margin-left: 1em;
 width: 70px;
+
+@media (max-width: 470px) {
+    margin: .5em 0;
+}
 `

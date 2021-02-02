@@ -17,6 +17,13 @@ height: 100%;
 display: flex;
 justify-content: space-between;
 align-items: center;
+
+@media (max-width: 450px) {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
 `
 
 export const Title = styled.h1`
