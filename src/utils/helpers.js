@@ -1,11 +1,12 @@
 import { NUMBER_LENGTH, DATE_LENGTH, CVC_LENGTH } from './constants';
 
-export const isFormComplete = (number, date, cvc, isError) => {
+export const isFormComplete = (number, date, cvc, isError, isCardProvider) => {
   if (
     number.length === NUMBER_LENGTH &&
     date.length === DATE_LENGTH &&
     cvc.length === CVC_LENGTH &&
-    !isError()
+    !isError() &&
+    isCardProvider()
   )
     return true;
   else return false;

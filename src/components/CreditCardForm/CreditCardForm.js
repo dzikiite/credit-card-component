@@ -56,7 +56,7 @@ const CreditCardForm = () => {
     </ErrorNotification>
   );
 
-  const successInfo = isFormComplete(number, date, cvc, validateCardDate) ? (
+  const successInfo = isFormComplete(number, date, cvc, validateCardDate, getCardProvider) ? (
     <SuccessNotification>{t('cardValidateSuccess')}</SuccessNotification>
   ) : null;
 

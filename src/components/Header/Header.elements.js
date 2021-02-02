@@ -10,6 +10,7 @@ export const HeaderContainer = styled.header`
   height: 100px;
   background-color: #181f2b;
 `;
+
 export const Container = styled.div`
   width: 100%;
   max-width: 1300px;
@@ -35,6 +36,7 @@ export const LanguageContainer = styled.div`
   display: flex;
   padding: 0 1em;
 `;
+
 export const LanguageItem = styled.p`
   font-weight: 500;
   cursor: pointer;

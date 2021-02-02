@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   NUMBER_REGEX,
   DATE_REGEX,
@@ -67,8 +67,6 @@ export const useCreditCard = () => {
         return 'outOfDateValidateMessage';
     }
   };
-
-  useEffect(() => {}, [number, date, cvc]);
 
   return { handleChange, number, date, cvc, getCardProvider, validateCardDate };
 };
