@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useCreditCard } from '../../hooks/useCreditCard';
 import { NUMBER, DATE, CVC, NUMBER_LENGTH, DATE_LENGTH } from '../../utils/constants';
+import { isFormComplete, getErrorMessage } from '../../utils/helpers';
 
 import { 
     Container,
@@ -33,20 +34,18 @@ const CreditCardForm = () => {
     ? ( getCardProvider() === 'mastercard' ? <Mastercard /> : <Visa />)
     : <Empty />;
 
-    const validateInfo = validateCardDate()
-    ? ( validateCardDate() === 'incorrectDateValidateMessage' 
-        ? ( <ErrorNotification>
-                {t('incorrectDateValidateMessage')}
-            </ErrorNotification>) : (
-            <ErrorNotification>
-                {t('outOfDateValidateMessage')}
-            </ErrorNotification>    
-        )
-    ) : (
+    const errorInfo = (
+        <ErrorNotification>
+            {t(getErrorMessage(validateCardDate, getCardProvider, number))}
+        </ErrorNotification>
+    );
+
+    const successInfo = isFormComplete(number, date, cvc, validateCardDate)
+    ?  (
         <SuccessNotification>
             {t('cardValidateSuccess')}
         </SuccessNotification>
-    )
+    ) : null;
 
     return (
         <Container>
@@ -73,7 +72,8 @@ const CreditCardForm = () => {
                 name={CVC}
                 />
             </CreditCard>
-            {validateInfo}
+            {errorInfo}
+            {successInfo}
         </Container>
     );
 }

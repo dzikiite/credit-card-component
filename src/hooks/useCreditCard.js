@@ -47,7 +47,7 @@ export const useCreditCard = () => {
         
         if(date.length === DATE_LENGTH) {
             if (date.slice(0, 2) > 12) return 'incorrectDateValidateMessage';
-            else if (date.slice(3, 5) < year || (date.slice(3, 5) === year && date.slice(0, 2) < month)) return 'dateValidateMessage';
+            else if (date.slice(3, 5) < year || (date.slice(3, 5) === year && date.slice(0, 2) < month)) return 'outOfDateValidateMessage';
         }
     }
 

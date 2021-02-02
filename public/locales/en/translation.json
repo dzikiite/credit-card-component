@@ -1,6 +1,7 @@
 {
     "title": "Recruitment task",
     "cardNumber": "Card number",
+    "incorrectNumberValidateMessage": "Your card is not supported",
     "outOfDateValidateMessage": "Credit card is out of date.",
     "incorrectDateValidateMessage": "Invalid date format.",
     "cardValidateSuccess": "Your card details look good.",
