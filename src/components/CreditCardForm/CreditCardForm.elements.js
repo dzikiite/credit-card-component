@@ -7,6 +7,7 @@ background-color: #ffffff;
 display: flex;
 justify-content: center;
 align-items: center;
+flex-direction: column;
 padding: 5rem;
 color: #000000;
 `
@@ -17,6 +18,16 @@ justify-content: center;
 align-items: center;
 border: 12px solid #ECEFF2;
 padding: .5em;
+`
+
+export const ErrorNotification = styled.p`
+color: red;
+font-size: .8em;
+padding: .5em;
+`
+
+export const SuccessNotification = styled(ErrorNotification)`
+color: green;
 `
 
 export const Mastercard = styled(FaCcMastercard)`

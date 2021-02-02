@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useCreditCard } from '../../hooks/useCreditCard';
-import { NUMBER, DATE, CVC, NUMBER_LENGTH } from '../../utils/constants';
+import { NUMBER, DATE, CVC, NUMBER_LENGTH, DATE_LENGTH } from '../../utils/constants';
 
 import { 
     Container,
@@ -11,22 +11,47 @@ import {
     Empty,
     CardNumber,
     CardDate,
-    CardCvc } from './CreditCardForm.elements';
+    CardCvc,
+    ErrorNotification,
+    SuccessNotification } from './CreditCardForm.elements';
 
 const CreditCardForm = () => {
     const { t } = useTranslation();
     const dateInput = useRef(null);
     const cvcInput = useRef(null);
-    const { number, date, cvc, handleChange } = useCreditCard();
+    const { number, 
+            date, 
+            cvc, 
+            handleChange,
+            getCardProvider,
+            validateCardDate } = useCreditCard();
 
     if (number.length === NUMBER_LENGTH) dateInput.current.focus();
+    if (date.length === DATE_LENGTH && number.length === NUMBER_LENGTH) cvcInput.current.focus();
+
+    const creditCardImage = getCardProvider()
+    ? ( getCardProvider() === 'mastercard' ? <Mastercard /> : <Visa />)
+    : <Empty />;
+
+    const validateInfo = validateCardDate()
+    ? ( validateCardDate() === 'incorrectDateValidateMessage' 
+        ? ( <ErrorNotification>
+                {t('incorrectDateValidateMessage')}
+            </ErrorNotification>) : (
+            <ErrorNotification>
+                {t('outOfDateValidateMessage')}
+            </ErrorNotification>    
+        )
+    ) : (
+        <SuccessNotification>
+            {t('cardValidateSuccess')}
+        </SuccessNotification>
+    )
 
     return (
         <Container>
             <CreditCard>
-                <Mastercard />
-                <Visa />
-                <Empty />
+                {creditCardImage}
                 <CardNumber
                 value={number}
                 onChange={handleChange} 
@@ -48,6 +73,7 @@ const CreditCardForm = () => {
                 name={CVC}
                 />
             </CreditCard>
+            {validateInfo}
         </Container>
     );
 }
